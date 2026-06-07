@@ -1,62 +1,48 @@
-# 🔢 Dynamic Memory Allocation: Count Odd Elements in an Array Using `malloc()` in C
+# # Pointers: Vowel or Consonant Checker Using Pointers in C
 
 ## 🎯 Aim
 
-To write a C program that counts the total number of odd elements in an array using dynamic memory allocation (`malloc()`).
+To write a C program to determine whether a character is a vowel or a consonant using a pointer.
 
 ## 🧠 Algorithm
 
-1. **Start** the program.
-2. **Input**:
-   - Read the total number of elements `n` from the user.
-   - Dynamically allocate memory for `n` integers using `malloc()`.
-3. **Input Array Elements**:
-   - Use a loop to read `n` integers into the allocated array.
-4. **Count Odd Numbers**:
-   - Initialize a counter variable `odd` to 0.
-   - Loop through each element in the array.
-   - If an element is odd (`element % 2 != 0`), increment the `odd` counter.
-5. **Output**:
-   - Print the total count of odd elements.
-6. **Free** the dynamically allocated memory using `free()`.
+1. **Input**:
+   - Read a character from the user.
+   - Store the character's address in a pointer variable `pch`.
+
+2. **Check Vowel**:
+   - Use an `if` or `switch` statement to check if the character pointed to by `pch` is one of the vowels: `'A'`, `'E'`, `'I'`, `'O'`, `'U'` (uppercase only).
+   - If it matches any of these, it is a **vowel**.
+   - Otherwise, it is a **consonant**.
+
+3. **Output**:
+   - Print whether the input character is a vowel or consonant.
 
 ## Program
 ```
 #include <stdio.h>
-#include <stdlib.h>
 int main() {
-    int *arr;
-    int n, i, odd = 0;
-    printf("Enter the number of elements: ");
-    scanf("%d", &n);
-    arr = (int *)malloc(n * sizeof(int));
-    if (arr == NULL) {
-        printf("Memory allocation failed!\n");
-        return 1;
+    char ch;
+    char *pch = &ch;  
+    printf("Enter an uppercase alphabet: ");
+    scanf(" %c", pch);  // Notice the space before %c to consume any leftover newline
+    if (*pch == 'A' || *pch == 'E' || *pch == 'I' || *pch == 'O' || *pch == 'U') {
+        printf("The character %c is a vowel.\n", *pch);
+    } else {
+        printf("The character %c is a consonant.\n", *pch);
     }
-    printf("Enter %d integers:\n", n);
-    for (i = 0; i < n; i++) {
-        scanf("%d", &arr[i]);
-    }
-    for (i = 0; i < n; i++) {
-        if (arr[i] % 2 != 0) {
-            odd++;
-        }
-    }
-    printf("Total number of odd elements: %d\n", odd);
-    free(arr);
     return 0;
 }
 ```
 
-
 ## Output
 ```
-Enter the number of elements: 6
-Enter 6 integers:
-2 7 4 9 10 11
-Total number of odd elements: 3
+Enter an uppercase alphabet: E
+The character E is a vowel.
+Enter an uppercase alphabet: G
+The character G is a consonant.
 ```
+
 
 
 
